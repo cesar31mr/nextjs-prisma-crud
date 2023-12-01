@@ -12,7 +12,7 @@ datasource db {
 
 model Task {
   id        Int      @id @default(autoincrement())
-  description DateTime @default(now())
-  title     String?
+  title     String
+  description String?
   createdAt DateTime @default(now())
 }
