@@ -9,7 +9,7 @@ export default function NewPage({ params }) {
     const [description, setDescription] = useState("");
 
     useEffect(() => {
-        if(params.id) {
+        if (params.id) {
             fetch(`/api/tasks/${params.id}`)
                 .then((res) => res.json())
                 .then((data) => {
@@ -17,12 +17,12 @@ export default function NewPage({ params }) {
                     setDescription(data.description);
                 });
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        if(params.id) {
+        if (params.id) {
             await fetch(`/api/tasks/${params.id}`, {
                 method: "PUT",
                 headers: {
@@ -45,7 +45,7 @@ export default function NewPage({ params }) {
                 }),
             });
         }
-        
+
         router.refresh();
         router.push("/");
     };
@@ -80,9 +80,30 @@ export default function NewPage({ params }) {
                     value={description}
                 ></textarea>
 
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                    Crear
-                </button>
+                <div className="flex justify-between">
+                    <button
+                        type="submit"
+                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                    >
+                        Crear
+                    </button>
+                    {params.id && (
+                        <button
+                            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                            onClick={async () => {
+                                const res = await fetch(`/api/tasks/${params.id}`, {
+                                    method: "DELETE",
+                                });
+
+                                const data = await res.json();
+                                router.refresh();
+                                router.push("/");
+                            }}
+                        >
+                            Eliminar
+                        </button>
+                    )}
+                </div>
             </form>
         </div>
     );
