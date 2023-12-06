@@ -29,3 +29,15 @@ Si queremos, podemos ver nuestra bd en el navegador con el siguiente comando:
 Finalmente ejecutamos nuestro proyecto.
 
 * $ npm run dev
+
+Deploy
+
+* $ npm i vercel -g
+
+Si es linux se agrega "sudo"
+
+* $ sudo npm i vercel -g
+
+Por último, para subir el proyecto se escribe el comando
+
+* $ vercel
