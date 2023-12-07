@@ -30,7 +30,9 @@ Finalmente ejecutamos nuestro proyecto.
 
 * $ npm run dev
 
-Deploy
+## Deploy
+
+### Vercel
 
 * $ npm i vercel -g
 
@@ -38,6 +40,32 @@ Si es linux se agrega "sudo"
 
 * $ sudo npm i vercel -g
 
+Nos logeamos con:
+
+* $ vercel login
+
 Por último, para subir el proyecto se escribe el comando
 
 * $ vercel
+
+### Firebase
+
+Para publicar el proyecto usando firebase primero hay que instalarlo con el siguiente comando
+
+* $ npm install -g firebase-tools
+
+Si es linux se agrega "sudo" al inicio
+
+* $ sudo npm install -g firebase-tools
+
+A continuación (se debe contar con una cuenta de [firebase](https://console.firebase.google.com/ "firebase")), desde la consola nos logeamos
+
+* $ firebase login
+
+En la carpeta del proyecto abrimos la consola e iniciamos el proyecto en firebase con el siguiente comando (si se descuadra la consola presiona "enter" y luego "1"):
+
+* $ firebase init
+
+Por último, para enviar el proyecto al sitio web de firebase, es decir, lo desplegamos:
+
+* $ firebase deploy
